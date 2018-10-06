@@ -11,10 +11,6 @@ let trelloContent = {
         "cards": ["Language Support"]
       }
     }
-  },
-  updateBoard: (name, board) => {
-	  trelloContent.data[name] = board;
-	  return trelloContent.data
   }
 };
 export default trelloContent
