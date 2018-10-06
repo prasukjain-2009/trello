@@ -17,7 +17,7 @@ class List extends Component {
 	deleteCard(index) {
 		let cards = this.state.cards;
 		cards.splice(index, 1);
-		this.props.updateCardsInList(this.state.name, cards);
+		this.props.updateCardsinList(this.state.name, cards);
 		this.cancelAddCard()
 	}
 
@@ -25,7 +25,7 @@ class List extends Component {
 		let cards = this.state.cards;
 		if (this.state.newCardText !== "") {
 			cards[index] = this.state.newCardText;
-			this.props.updateCardsInList(this.state.name, cards);
+			this.props.updateCardsinList(this.state.name, cards);
 			this.setState({
 				newCardActive: false,
 				newCardText: "",
@@ -57,9 +57,10 @@ class List extends Component {
 
 	addCard(name) {
 		let cards = this.state.cards;
+
 		if (this.state.newCardText !== "") {
 			cards.push(this.state.newCardText);
-			this.props.updateCardsInList(name, cards);
+			this.props.updateCardsinList(name, cards);
 			this.cancelAddCard();
 			this.setState({
 				newCardActive: false,
@@ -73,7 +74,6 @@ class List extends Component {
 	deleteList() {
 		let name = this.state.name;
 		this.props.deleteList(name);
-		this.cancelAddCard()
 	}
 
 	render() {
@@ -83,14 +83,13 @@ class List extends Component {
 					className={"card " + (this.state.cardEditNumber === index ? "hidden" : "")}
 					key={this.state.name + "-card-" + JSON.stringify(index)}>
 					{/* DELETE BUTTON */}
-					<div className="card-delete-div">
+					<div className="card-delete-div"
+					onClick={() => { this.deleteCard(index); }}>
 						<img
 							className="delete-btn"
 							alt="delete card"
-							src={cross}
-							onClick={() => {
-								this.deleteList(index);
-							}} /></div>
+							src={cross} />
+					</div>
 					<div onClick={evt => this.editCard(index)}>
 						<span>{card}</span>
 					</div>
@@ -99,11 +98,11 @@ class List extends Component {
 
 		return (
 			<td key={this.state.name}>
-				<div className=" list-obj card" onBlur={() => this.cancelAddCard()}>
-					<div className="list-delete-div">
-						<img className="delete-btn" alt="delete card" src={cross} onClick={() => {
-							this.deleteList();
-						}} />
+				{/* onBlur={() => this.cancelAddCard()} */}
+				<div className=" list-obj card" >
+					<div className="list-delete-div" 
+						 onClick={() => {this.deleteList();}}>
+						<img className="delete-btn" alt="delete card" src={cross} />
 					</div>
 					<div className="list-head">{this.state.name}</div>
 					{cards}
@@ -116,17 +115,15 @@ class List extends Component {
 						<div
 							className="add-card">
 							<textarea
-								autofocus
+								autoFocus
 								placeholder="Enter title for this card ...."
 								className="add-card-ta"
-								onKeyPress={(evt) => evt.keyCode === 13 ?
-									this.createList(this.state.cardEditNumber === -1 ?
-										this.addCard(this.state.name) : this.updateCard(this.state.cardEditNumber)) : ""}
-								onChange={evt => this.setState({ newCardText: evt.target.value })} value={this.state.newCardText} />
+								onChange={evt => this.setState({ newCardText: evt.target.value })} 
+								value={this.state.newCardText} />
 							<div className="add-card-footer">
 								<button className="add-card-btn"
-									onClick={() => this.state.cardEditNumber === -1 ?
-										this.addCard(this.state.name) : this.updateCard(this.state.cardEditNumber)}>
+									onClick={() =>
+										this.state.cardEditNumber === -1 ? this.addCard(this.state.name) : this.updateCard(this.state.cardEditNumber)}>
 									{this.state.cardEditNumber === -1 ? "Add Card" : "Update Card"}
 								</button>
 								<span>
