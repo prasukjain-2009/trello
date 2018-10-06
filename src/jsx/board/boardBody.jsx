@@ -29,7 +29,7 @@ class BoardBody extends React.Component {
 
 			let board = this.props.board;
 
-			if (board.lists.indexOf(listName >= 0)) alert("List name already exist");
+			if (board.lists.indexOf(listName) !==-1 ) alert("List name already exist");
 			else {
 				board.lists.push(listName);
 				board[listName] = { cards: [] };
