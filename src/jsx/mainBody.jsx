@@ -12,7 +12,7 @@ class MainBody extends Component {
 	updateBoard(board,bdata){
 		let data=this.state.data;
 		data[board]=bdata;
-		window.localStorage.setItem("trelloContent",JSON.parse(data))
+		window.localStorage.setItem("trelloContent",JSON.stringify(data))
 		this.setState({data:data})
 	}
 	
