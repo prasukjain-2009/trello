@@ -1,0 +1,57 @@
+.board-body {
+    border-collapse: separate;
+    font-size: 1.4rem;
+}
+
+.list-obj {
+    padding: 5px;
+    width: 250px;
+    background-color: #dfe3e6;
+    border-radius: 5px;
+}
+
+.list-obj.list-new {
+    background-color: rgb(61, 129, 35);
+    color: #fff;
+}
+
+.new-list-btn {
+    border: 0;
+    margin: 0;
+    width: 100%;
+    background-color: transparent;
+    text-align: left;
+    color: #ddd;
+    outline: none;
+}
+
+.list-new.create-list {
+    background-color: white;
+    border: 6px solid rgb(61, 129, 35);
+}
+
+.list-new.create-list .new-list-btn {
+    display: none;
+}
+
+.list-new.create-list .create-list-div {
+    display: block;
+    cursor: pointer;
+}
+
+.create-new-tf {
+    color: #000;
+    width: 90%;
+    border: 0;
+    outline: none;
+}
+
+.create-list-div {
+    display: none;
+}
+
+.create-btn {
+    float: right;
+    height: auto;
+    width: 10%;
+}

@@ -1,0 +1,94 @@
+.list-delete-div {
+    display: none;
+    float: right;
+    top: 0;
+}
+
+.list-obj:hover .list-delete-div {
+    opacity: 1;
+    display: block;
+}
+
+.list-head {
+    margin: 5px 5px 10px 5px;
+    font-weight: bold;
+    padding-left: 1px;
+}
+
+.card {
+    background-color: white;
+    margin: 5px;
+    padding: 8px;
+    border-radius: 3px;
+    font-size: 13px;
+}
+
+.card.hidden {
+    display: none;
+}
+
+.new-card {
+    margin: 5px;
+}
+
+.new-card-btn {
+    cursor: pointer;
+    opacity: .7;
+    padding-left: 3px;
+    margin-top: 10px;
+}
+
+.new-card.active .new-card-btn {
+    display: none;
+}
+
+.new-card .add-card {
+    display: none;
+}
+
+.new-card.active .add-card {
+    display: block;
+    cursor: pointer;
+}
+
+.add-card-ta {
+    padding: 8px;
+    resize: none;
+    width: 100%;
+    border: none;
+    border-radius: 3px;
+    outline: none;
+}
+
+.add-card-btn {
+    padding: 5px 10px;
+    color: #fff;
+    border: none;
+    font-weight: 700;
+    background-color: rgb(81, 151, 56);
+    border-radius: 5px;
+}
+
+#add-card-cancel {
+    background-color: transparent;
+    height: 25px;
+    margin: 5px;
+    padding: 5px;
+    /* font-weight: lighter; */
+}
+
+.delete-btn {
+    height: 10px;
+    width: 10px;
+}
+
+.card:hover .card-delete-div {
+    opacity: .7;
+    display: block;
+}
+
+.card-delete-div {
+    display: none;
+    float: right;
+    top: 0;
+}
