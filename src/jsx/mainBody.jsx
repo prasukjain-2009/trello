@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import trelloContent from '../js/trelloContent'
 import BoardHeading from './board/boardHeading.jsx';
 import BoardBody from "./board/boardBody.jsx";
 
@@ -7,10 +6,15 @@ class MainBody extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			data: trelloContent.data
+			data: JSON.parse(window.localStorage.getItem("trelloContent"))
 		}
 	}
-	
+	updateBoard(board,bdata){
+		let data=this.state.data;
+		data[board]=bdata;
+		window.localStorage.setItem("trelloContent",JSON.parse(data))
+		this.setState({data:data})
+	}
 	
 	render() {
 		return (
