@@ -10,7 +10,8 @@ class MainBody extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			data: this.props.data
+			data: this.props.data,
+			activeBoard:this.props.data.boards[0]
 		};
 		this.props.selectBoard("Kubric UI")
 	}
@@ -28,19 +29,19 @@ class MainBody extends Component {
 		window.removeEventListener('beforeunload', this.saveStateToLocalStorage.bind(this));
 	}
 	
-	updateBoard(board,bdata){
+	updateBoard(bdata){
 		let data=this.state.data;
-		data[board]=bdata;
+		data[this.state.activeBoard]=bdata;
 		this.setState({data:data})
 	}
 	
 	render() {
 		return (
 			<div className="container-fluid p-1 content ml-0">
-				<BoardHeading board={this.state.data.boards[this.props.board]}/>
+				<BoardHeading board={this.state.activeBoard}/>
 				<BoardBody
 					board={this.state.data[this.state.data.boards[this.props.board]]}
-					updateBoard={(brd, data) => this.updateBoard(brd, data)}/>
+					updateBoard={(brd, data) => this.updateBoard(data)}/>
 			</div>
 		)
 	}
