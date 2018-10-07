@@ -5,6 +5,8 @@
 
 .list-obj {
     padding: 5px;
+    margin: 5px;
+    margin-right: 10px;
     width: 250px;
     background-color: #dfe3e6;
     border-radius: 5px;
