@@ -9,7 +9,7 @@ class BoardBody extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			createList: true,
+			createList: false,
 			newListName: "",
 			board: ""
 		}
@@ -69,7 +69,7 @@ class BoardBody extends React.Component {
 							<div className={"list-obj list-new" + (this.state.createList ? " create-list" : "")}>
 								<button
 									className="new-list-btn  "
-									onClick={() => this.setState({ createList: true, newListName: "" })}> Add a list..
+									onClick={() => this.setState({ createList: true, newListName: "" })}>+ Add New List..
 							</button>
 								<div className="create-list-div"
 								>

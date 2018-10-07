@@ -1,18 +1,24 @@
 import React, {Component} from 'react';
 import BoardHeading from './board/boardHeading.jsx';
 import BoardBody from "./board/boardBody.jsx";
+import {connect} from "react-redux";
+import selectBoard from './../action/index';
+import { bindActionCreators } from 'redux';
+
 
 class MainBody extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			data: JSON.parse(window.localStorage.getItem("trelloContent"))
+			data: this.props.data
 		}
+	}
+	componentWillUnmount(){
+		window.localStorage.setItem("trelloContent",JSON.stringify(this.state.data))
 	}
 	updateBoard(board,bdata){
 		let data=this.state.data;
 		data[board]=bdata;
-		window.localStorage.setItem("trelloContent",JSON.stringify(data))
 		this.setState({data:data})
 	}
 	
@@ -28,4 +34,13 @@ class MainBody extends Component {
 	}
 }
 
-export default MainBody
+function mapStatetoProps(state){
+	return{
+		data:state.data
+	}
+}
+
+function mapDispatchToProps(dispatch){
+	return bindActionCreators({selectBoard:selectBoard},dispatch)
+}
+export default connect(mapStatetoProps,mapDispatchToProps)(MainBody)
