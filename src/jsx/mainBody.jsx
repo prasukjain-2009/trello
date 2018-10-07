@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import BoardHeading from './board/boardHeading.jsx';
 import BoardBody from "./board/boardBody";
 import {connect} from "react-redux";
-import selectBoard from './../js/action/index.js';
+import selectBoard,{updateData} from './../js/action/index.js';
 import { bindActionCreators } from 'redux';
 
 
@@ -10,12 +10,17 @@ class MainBody extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			data: this.props.data
+			data: this.props.data,
+			selectedBoard:"Kubric UI"
 		}
-		this.props.selectBoard("Kubric UI")
+		this.props.selectBoard(this.state.selectedBoard)
 	}
 	componentWillUnmount(){
-		window.localStorage.setItem("trelloContent",JSON.stringify(this.state.data))
+		console.log("hello");
+		
+		setTimeout(()=>{console.log("hellp",500);
+		})
+		this.props.updateData(this.state.data)
 	}
 	updateBoard(board,bdata){
 		let data=this.state.data;
@@ -26,9 +31,8 @@ class MainBody extends Component {
 	render() {
 		return (
 			<div className="container-fluid p-1 content ml-0">
-				<BoardHeading board={this.state.data.boards[this.props.board]}/>
+				<BoardHeading board={this.state.selectedBoard}/>
 				<BoardBody
-					board={this.state.data[this.state.data.boards[this.props.board]]}
 					updateBoard={(brd, data) => this.updateBoard(brd, data)}/>
 			</div>
 		)
@@ -38,11 +42,11 @@ class MainBody extends Component {
 function mapStatetoProps(state){
 	return{
 		data:state.data,
-		activeBoard:state.activeBoard
 	}
 }
 
 function mapDispatchToProps(dispatch){
-	return bindActionCreators({selectBoard:selectBoard},dispatch)
+	return bindActionCreators({selectBoard:selectBoard,
+	updateData:updateData},dispatch)
 }
 export default connect(mapStatetoProps,mapDispatchToProps)(MainBody)

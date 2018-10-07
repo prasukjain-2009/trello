@@ -1,10 +1,14 @@
 import { combineReducers } from 'redux';
-import BoardReducers from './reducerBoards';
-import reducer_active_board from './reducerActiveBoard';
+import reducerData from './reducerData';
+import reducerBoards from './reducerBoards';
+import reducerActiveBoard from './reducerActiveBoard';
+import reducerUpdateData from './reducerUpdateData';
 
 const rootReducer = combineReducers({
-  data:BoardReducers,
-  activeBoard:reducer_active_board
+  updateData:reducerUpdateData,
+  data:reducerData,
+  board:reducerBoards,
+  activeBoard:reducerActiveBoard
 });
 
 export default rootReducer;

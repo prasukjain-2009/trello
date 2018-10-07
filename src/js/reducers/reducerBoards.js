@@ -1,12 +1,6 @@
-import trelloContent from '../trelloContent';
+import reducerData from './reducerData';
 
-export default function(){
-    let x= window.localStorage.getItem("trelloContent")
-		if (!x)	{
-			x= trelloContent.data
-        }
-        else{
-            x=JSON.parse(x)
-        }
-    return x
+function reducerBoards(){
+    return reducerData().boards
 }
+export default reducerBoards;

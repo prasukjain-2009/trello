@@ -4,3 +4,9 @@ export default function selectBoard(board){
         payload:board
     }
 }
+
+export function updateData(data){
+    return{
+        type:"UPDATE_BOARD",
+        payload:data    }
+}

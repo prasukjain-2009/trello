@@ -1,9 +1,12 @@
-export default function(state=null,action){
+import reducerData from './reducerData';
+function reducerActiveBoard(state=null,action){
     
     switch (action.type){
         case "BOARD_SELECTED":
-            return action.payload
+            return reducerData()[action.payload]
         default:
-            return "Kubric UI";
+            
+            return reducerData()["Kubric UI"];
     }
 }
+export default reducerActiveBoard

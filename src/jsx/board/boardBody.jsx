@@ -2,6 +2,7 @@ import React from 'react'
 import List from "../list/list.jsx";
 import cross from "../../img/cross.svg";
 import "../../css/boardBody.css";
+import { connect } from 'react-redux';
 
 
 class BoardBody extends React.Component {
@@ -105,4 +106,11 @@ class BoardBody extends React.Component {
 	}
 }
 
-export default BoardBody;
+
+function mapStatetoProps(state){
+	
+	return{
+		board:state.activeBoard,
+	}
+}
+export default connect(mapStatetoProps)(BoardBody);
