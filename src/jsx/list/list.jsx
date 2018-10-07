@@ -86,7 +86,7 @@ class List extends Component {
 					key={this.state.name + "-card-" + JSON.stringify(index)}>
 					{/* DELETE BUTTON */}
 					<div className="card-delete-div"
-					onClick={() => { this.deleteCard(index); }}>
+						onClick={() => { this.deleteCard(index); }}>
 						<img
 							className="delete-btn"
 							alt="delete card"
@@ -102,8 +102,8 @@ class List extends Component {
 			<td key={this.state.name}>
 				{/* onBlur={() => this.cancelAddCard()} */}
 				<div className=" list-obj " >
-					<div className="list-delete-div" 
-						 onClick={() => {this.deleteList();}}>
+					<div className="list-delete-div"
+						onClick={() => { this.deleteList(); }}>
 						<img className="delete-btn" alt="delete card" src={deletebtn} />
 					</div>
 					<div className="list-head">{this.state.name}</div>
@@ -120,7 +120,7 @@ class List extends Component {
 								autoFocus
 								placeholder="Enter title for this card ...."
 								className="add-card-ta"
-								onChange={evt => this.setState({ newCardText: evt.target.value })} 
+								onChange={evt => this.setState({ newCardText: evt.target.value })}
 								value={this.state.newCardText} />
 							<div className="add-card-footer">
 								<button className="add-card-btn"

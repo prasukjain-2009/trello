@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import logo from "../../img/trello-logo-white.svg";
 
 class NavBar extends Component {
@@ -8,14 +8,14 @@ class NavBar extends Component {
 			selectedBoard: 0
 		};
 		props.selectedBoard(0)
-		
+
 	}
-	
+
 	render() {
-		
+
 		return (
 			<div className="nav-bar " data-spy="affix">
-				<img className="trello-logo" alt="trello" src={logo}/>
+				<img className="trello-logo" alt="trello" src={logo} />
 			</div>
 		)
 	}

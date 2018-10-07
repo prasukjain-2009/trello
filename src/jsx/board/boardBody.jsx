@@ -30,7 +30,7 @@ class BoardBody extends React.Component {
 
 			let board = this.props.board;
 
-			if (board.lists.indexOf(listName) !==-1 ) alert("List name already exist");
+			if (board.lists.indexOf(listName) !== -1) alert("List name already exist");
 			else {
 				board.lists.push(listName);
 				board[listName] = { cards: [] };
@@ -80,7 +80,7 @@ class BoardBody extends React.Component {
 										onChange={evt => this.setState({ newListName: evt.target.value })}
 										value={this.state.newListName}
 									/>
-									
+
 									<div className="create-btn-div">
 										<button
 											className="create-btn"
@@ -89,8 +89,8 @@ class BoardBody extends React.Component {
 												this.createList(this.state.newListName);
 											}} >Add List
 										</button>
-										<img 
-											onClick={()=>this.setState({newListName:"",createList:false})}
+										<img
+											onClick={() => this.setState({ newListName: "", createList: false })}
 											className="cancel-btn"
 											alt="cancel"
 											src={cross}
@@ -107,10 +107,10 @@ class BoardBody extends React.Component {
 }
 
 
-function mapStatetoProps(state){
-	
-	return{
-		board:state.activeBoard,
+function mapStatetoProps(state) {
+
+	return {
+		board: state.activeBoard,
 	}
 }
 export default connect(mapStatetoProps)(BoardBody);
