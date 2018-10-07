@@ -40,7 +40,7 @@ class MainBody extends Component {
 			<div className="container-fluid p-1 content ml-0">
 				<BoardHeading board={this.state.activeBoard}/>
 				<BoardBody
-					board={this.state.data[this.state.data.boards[this.props.board]]}
+					board={this.state.data[this.state.activeBoard]}
 					updateBoard={(brd, data) => this.updateBoard(data)}/>
 			</div>
 		)
