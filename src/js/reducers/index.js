@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import BoardReducers from './reducer_boards';
-import reducer_active_board from './reducer_active_board';
+import BoardReducers from './reducerBoards';
+import reducer_active_board from './reducerActiveBoard';
 
 const rootReducer = combineReducers({
   data:BoardReducers,

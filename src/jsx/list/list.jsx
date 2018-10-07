@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import cross from "../../svg/cross.svg";
-import deletebtn from "../../png/delete.png";
+import cross from "../../img/cross.svg";
+import deletebtn from "../../img/delete.png";
 
 import '../../css/list.css';
 

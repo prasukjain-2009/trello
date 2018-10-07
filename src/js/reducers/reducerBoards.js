@@ -1,4 +1,4 @@
-import trelloContent from '../js/trelloContent';
+import trelloContent from '../trelloContent';
 
 export default function(){
     let x= window.localStorage.getItem("trelloContent")

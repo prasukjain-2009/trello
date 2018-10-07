@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import logo from "../../svg/trello-logo-white.svg";
+import logo from "../../img/trello-logo-white.svg";
 
 class NavBar extends Component {
 	constructor(props) {

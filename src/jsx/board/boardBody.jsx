@@ -1,6 +1,6 @@
 import React from 'react'
 import List from "../list/list.jsx";
-import cross from "../../svg/cross.svg";
+import cross from "../../img/cross.svg";
 import "../../css/boardBody.css";
 
 

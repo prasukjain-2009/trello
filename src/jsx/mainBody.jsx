@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import BoardHeading from './board/boardHeading.jsx';
-import BoardBody from "./board/boardBody.jsx";
+import BoardBody from "./board/boardBody";
 import {connect} from "react-redux";
-import selectBoard from './../action/index';
+import selectBoard from './../js/action/index.js';
 import { bindActionCreators } from 'redux';
 
 
@@ -12,6 +12,7 @@ class MainBody extends Component {
 		this.state = {
 			data: this.props.data
 		}
+		this.props.selectBoard("Kubric UI")
 	}
 	componentWillUnmount(){
 		window.localStorage.setItem("trelloContent",JSON.stringify(this.state.data))
@@ -36,7 +37,8 @@ class MainBody extends Component {
 
 function mapStatetoProps(state){
 	return{
-		data:state.data
+		data:state.data,
+		activeBoard:state.activeBoard
 	}
 }
 
