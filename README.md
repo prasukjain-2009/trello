@@ -17,6 +17,10 @@ This is a sample application to implement `react` and `redux`. The goal of the a
 - install the dependencies using ` npm i ` or ` npm install `
 - start the server using `npm start`
 
+##### To build the project
+- open the repository in terminal
+- use ` npm build . `
+
 ##### Dependencies
 - react v16.5
 - redux v4.0
