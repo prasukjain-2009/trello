@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import cross from "../../svg/cross.svg";
+import deletebtn from "../../png/delete.png";
+
 import '../../css/list.css';
 
 class List extends Component {
@@ -88,9 +90,9 @@ class List extends Component {
 						<img
 							className="delete-btn"
 							alt="delete card"
-							src={cross} />
+							src={deletebtn} />
 					</div>
-					<div onClick={evt => this.editCard(index)}>
+					<div className="card-content" onClick={evt => this.editCard(index)}>
 						<span>{card}</span>
 					</div>
 				</div>)
@@ -99,10 +101,10 @@ class List extends Component {
 		return (
 			<td key={this.state.name}>
 				{/* onBlur={() => this.cancelAddCard()} */}
-				<div className=" list-obj card" >
+				<div className=" list-obj " >
 					<div className="list-delete-div" 
 						 onClick={() => {this.deleteList();}}>
-						<img className="delete-btn" alt="delete card" src={cross} />
+						<img className="delete-btn" alt="delete card" src={deletebtn} />
 					</div>
 					<div className="list-head">{this.state.name}</div>
 					{cards}
