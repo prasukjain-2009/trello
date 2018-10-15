@@ -20,7 +20,7 @@ class List extends Component {
 		let cards = this.state.cards;
 		cards.splice(index, 1);
 		this.props.updateCardsinList(this.state.name, cards);
-		this.cancelAddCard()
+		this.resetCreateDiv(false)
 	}
 
 	updateCard(index) {
@@ -36,17 +36,7 @@ class List extends Component {
 		}
 	}
 
-	showAddCard(evt) {
-		this.setState({ newCardActive: true });
-	}
 
-	cancelAddCard() {
-		this.setState({
-			newCardActive: false,
-			newCardText: "",
-			cardEditNumber: -1
-		});
-	}
 
 	editCard(index) {
 		this.setState({
@@ -57,13 +47,19 @@ class List extends Component {
 
 	}
 
+  resetCreateDiv(newCardActive){
+    this.setState({
+      newCardActive:newCardActive,
+			newCardText: "",
+			cardEditNumber: -1})
+  }
 	addCard(name) {
 		let cards = this.state.cards;
 
 		if (this.state.newCardText !== "") {
 			cards.push(this.state.newCardText);
 			this.props.updateCardsinList(name, cards);
-			this.cancelAddCard();
+			this.resetCreateDiv(false);
 			this.setState({
 				newCardActive: false,
 				newCardText: "",
@@ -79,6 +75,32 @@ class List extends Component {
 	}
 
 	render() {
+    const newCardBtn=<div className="new-card-btn" 
+    onClick={()=>this.resetCreateDiv(true)}>
+      Add a card...
+    </div>
+
+    const newCardDiv=<div
+    className="add-card"
+    onBlur={()=>setTimeout(()=>this.resetCreateDiv(false),1000)}>
+    <textarea
+      autoFocus
+      placeholder="Enter title for this card ...."
+      className="add-card-ta"
+      onChange={evt => this.setState({ newCardText: evt.target.value })}
+      value={this.state.newCardText} />
+    <div className="add-card-footer">
+      <button className="add-card-btn"
+        onClick={() =>{this.state.cardEditNumber === -1 ? this.addCard(this.state.name) : this.updateCard(this.state.cardEditNumber)}}>
+        {this.state.cardEditNumber === -1 ? "Add Card" : "Update Card"}
+      </button>
+      <span>
+        <img id="add-card-cancel" alt="cancel" src={cross} onClick={()=>this.resetCreateDiv(false)} />
+      </span>
+    </div>
+  </div>
+
+    
 		const cards = this.state.cards.map((card, index) => {
 			return (
 				<div
@@ -100,7 +122,6 @@ class List extends Component {
 
 		return (
 			<td key={this.state.name}>
-				{/* onBlur={() => this.cancelAddCard()} */}
 				<div className=" list-obj " >
 					<div className="list-delete-div"
 						onClick={() => { this.deleteList(); }}>
@@ -109,31 +130,9 @@ class List extends Component {
 					<div className="list-head">{this.state.name}</div>
 					{cards}
 					<div className={"new-card " + (this.state.newCardActive ? "active" : "")}>
-						<div className="new-card-btn" onClick={evt => {
-							this.showAddCard(evt)
-						}}>
-							Add a card...
-						</div>
-						<div
-							className="add-card">
-							<textarea
-								autoFocus
-								placeholder="Enter title for this card ...."
-								className="add-card-ta"
-								onChange={evt => this.setState({ newCardText: evt.target.value })}
-								value={this.state.newCardText} />
-							<div className="add-card-footer">
-								<button className="add-card-btn"
-									onClick={() =>
-										this.state.cardEditNumber === -1 ? this.addCard(this.state.name) : this.updateCard(this.state.cardEditNumber)}>
-									{this.state.cardEditNumber === -1 ? "Add Card" : "Update Card"}
-								</button>
-								<span>
-									<img id="add-card-cancel" alt="cancel" src={cross} onClick={evt => this.cancelAddCard()} />
-								</span>
-							</div>
-						</div>
-					</div>
+            {this.state.newCardActive?newCardDiv:newCardBtn}
+            {/* {newCardDiv} */}
+          </div>
 				</div>
 			</td>
 		)
