@@ -33,14 +33,9 @@
     background-color: #dfe3e6;
 }
 
-.list-new.create-list .new-list-btn {
-    display: none;
-}
-
-.list-new.create-list .create-list-div {
-    display: block;
+.create-list-div {
     cursor: pointer;
-}
+} 
 
 .create-new-tf {
     color: #000;
@@ -52,9 +47,6 @@
     outline: none;
 }
 
-.create-list-div {
-    display: none;
-}
 .create-btn-div{
     margin: 5px;
 }
