@@ -14,6 +14,7 @@ class List extends Component {
 			cardEditNumber: -1,
 			cards: props.content.cards
 		}
+		this.onDrop= this.onDrop.bind(this)
 	}
 
 	deleteCard(index) {
@@ -73,6 +74,17 @@ class List extends Component {
 
 	}
 
+	onDragStart(ev,card){
+		ev.dataTransfer.setData("text", card);
+	}
+	
+	onDrop(ev){
+		ev.preventDefault();
+		var data = ev.dataTransfer.getData("text");	
+		console.log(data);
+		  
+		this.addCard(data)
+	}
 	deleteList() {
 		let name = this.state.name;
 		this.props.deleteList(name);
@@ -83,7 +95,7 @@ class List extends Component {
 			return (
 				<div
 					className={"card " + (this.state.cardEditNumber === index ? "hidden" : "")}
-					key={this.state.name + "-card-" + JSON.stringify(index)}>
+					key={this.state.name + "-card-" + JSON.stringify(index)} draggable onDragStart={e=>this.onDragStart(e,card)}>
 					{/* DELETE BUTTON */}
 					<div className="card-delete-div"
 						onClick={() => { this.deleteCard(index); }}>
@@ -99,7 +111,7 @@ class List extends Component {
 		});
 
 		return (
-			<td key={this.state.name}>
+			<td key={this.state.name} onDrop={this.onDrop } onDragOver={e=>e.preventDefault()}>
 				{/* onBlur={() => this.cancelAddCard()} */}
 				<div className=" list-obj " >
 					<div className="list-delete-div"
